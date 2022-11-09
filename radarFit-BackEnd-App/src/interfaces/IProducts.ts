@@ -1,7 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 import { z } from 'zod';
 
-export const Product = z.object({
+export const ProductZodSchema = z.object({
   produto: z.string({
     required_error: 'produto is required',
     invalid_type_error: 'produto must be a string',
@@ -25,4 +25,4 @@ export const Product = z.object({
   }).min(3, { message: 'updated must be 3 or more characters long' }),
 });
 
-export type IProduct = z.infer<typeof Product>
+export type IProduct = z.infer<typeof ProductZodSchema>
