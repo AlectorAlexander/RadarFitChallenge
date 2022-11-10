@@ -5,6 +5,8 @@ import MongoModel from './MongoModel';
 export const ProdutoMongooseSchema = new Schema<IProduct>({
   produto: String,  
   valor: Number,  
+  descricao: String,
+  url_image: String,
   created: Date,
   updated: Date,
 });

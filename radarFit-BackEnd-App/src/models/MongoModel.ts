@@ -14,6 +14,11 @@ abstract class MongoModel<T> implements IModel<T> {
     return result;
   }
 
+  public async insertMany(array: Array<T>):Promise<T[]> {
+    const result = await this._model.insertMany(array);
+    return result;
+  }
+
   public async read():Promise<T[]> {
     const result = await this._model.find({ });
     return result;
@@ -36,6 +41,11 @@ abstract class MongoModel<T> implements IModel<T> {
     const result = await this._model.findByIdAndDelete({ _id });
     return result;
   }
+
+  public async deleteMany(condition: any): Promise<any> {
+    return await this._model.deleteMany(condition).exec();
+  }
+
 }
 
 export default MongoModel;

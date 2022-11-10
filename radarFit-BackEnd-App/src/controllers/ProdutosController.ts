@@ -10,10 +10,10 @@ export default class ProductController {
     res: Response<IProduct>,
   ) {
     const {
-      produto, valor, descricao, created, updated,
+      produto, valor, descricao, created, updated, url_image
     } = req.body;
     const product = {
-      produto, valor, descricao, created, updated,
+      produto, valor, descricao, created, updated, url_image
     };
     const results = await this._service.create(product);
     return res.status(201).json(results);
@@ -40,11 +40,11 @@ export default class ProductController {
     res: Response<IProduct>,
   ) {
     const {
-      produto, valor, descricao, created, updated,
+      produto, valor, descricao, created, updated, url_image
     } = req.body;
     const { id } = req.params;
     const product: IProduct = {
-      produto, valor, descricao, created, updated,
+      produto, valor, descricao, created, updated, url_image
     };
 
     const result = await this._service.update(id, product);
