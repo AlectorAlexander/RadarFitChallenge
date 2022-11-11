@@ -75,9 +75,10 @@ export async function UpdateDocumentUser( id, document ) {
     return response;
 }
 
-export async function UpdateDocumentUser( id, document ) {
+export async function UpdateProduct( id, product ) {
+    console.log(product);
     const response = await instance
-        .put(`users/${id}`, { id, document })
+        .put(`produtos/${id}`, { ...product })
         .catch((error) => {
             console.log(error);
             return error.response;

@@ -147,13 +147,13 @@ const seedUsers = [
     {
         nome: "Alberto Justus",
         email: "admin@gmail.com",
-        senha: "queijo_suiço",
+        senha: '$2a$10$yo5nLTcfT65slw7XodspQutwJop1dBKUjZujrxWn64IniyetufXsm', /* "queijo_suiço", */
         role: "Administrador"
     },
     {
         nome: "Alehandro Pietro",
         email: "user@gmail.com",
-        senha: "perna_de_grilo",
+        senha: "$2a$10$UIeVcbA7eWZ10RD2B0bL9.b3o8ueFi.d4O838k.vmjpE0GCTtlAoq", //perna_de_grilo",
         role: "Usuário"
     }
 ]

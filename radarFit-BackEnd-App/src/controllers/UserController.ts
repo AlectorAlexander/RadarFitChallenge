@@ -21,6 +21,7 @@ class UserController {
     const { email, senha } = req.body;
 
     const response = await this.userService.findInfo(email, senha);
+    
 
     if (typeof response === 'object') return next(response);
 
@@ -30,12 +31,12 @@ class UserController {
   public register = async  (req: Request, res: Response, next: NextFunction) => {
     const { email, senha, role, nome } = req.body;
     
-
+    
     const response = await this.userService.create({email, senha, role, nome});
     
     if (typeof response === 'object') return next(response);
 
-    return res.status(StatusCodes.OK).json({ token: response });
+    return res.status(StatusCodes.CREATED).json({ token: response });
   };
 
 

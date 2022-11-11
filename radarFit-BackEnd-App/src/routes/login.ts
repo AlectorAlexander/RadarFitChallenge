@@ -10,6 +10,6 @@ const userController = new UserController();
 router.post('/login', userController.login);
 router.get('/login/validate', userController.validate);
 router.get('/users', userController.findAll);
-router.post('/user', userController.register);
+router.post('/register', userController.register);
 
 export default router;

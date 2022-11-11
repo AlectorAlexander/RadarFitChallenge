@@ -28,15 +28,16 @@ class User implements IService<IUser> {
 
   public async create(obj:any):Promise<String | ErrorService> {
     const parsed = UserZodSchema.safeParse(obj);
+    
     if (parsed.success === false) {
       throw parsed.error;
     }
     const { email, senha, role, nome } = obj;
-    console.log(obj);
     
     const findInfo = await this._User.readOneByEmail(email)
     if (findInfo) return { error: { message: 'User already registered', status: 409 } };
     const newSenha = await bcrypt.hash(senha, saltRounds)
+    
     await this._User.create({email, senha: newSenha, role, nome});
     return sign({
       nome,
@@ -81,6 +82,7 @@ export default class UserServices extends User {
     const checkPassword = foundUser ? foundUser.senha : 'THISISNOTVALIDPASSWORD';
     const validateUser: boolean = bcrypt
       .compareSync(senha, checkPassword);
+
 
     const error = { status: 401, message: 'Incorrect email or senha' };
 
