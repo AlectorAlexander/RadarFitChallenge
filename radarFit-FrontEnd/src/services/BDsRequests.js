@@ -53,8 +53,24 @@ export async function validateUser() {
     if (response.data.role) {
         const { data } = response;
         const { role } = data;
-        console.log(role);
         return role;
+    }
+    return response;
+}
+
+export async function UpdateDocumentUser( id, document ) {
+    const response = await instance
+        .put(`users/${id}`, { id, document })
+        .catch((error) => {
+            console.log(error);
+            return error.response;
+        });
+
+    if (response.data.token) {
+        const { data } = response;
+        const { token } = data;
+        instance.defaults.headers.Authorization = token;
+        return response;
     }
     return response;
 }

@@ -5,19 +5,48 @@ import { Button, Form, FormGroup, Modal } from 'react-bootstrap';
 
 function ModalAdminDetails({ show, setShow, Item }) {
     const [Produto, setProduto] = useState('');
+    const [id, setID] = useState('');
     const [UrlImage, setUrlImage] = useState('');
     const [Descricao, setDescricao] = useState('');
     const [Valor, setValor] = useState('');
+    const [SaveButton, setSaveButton] = useState(true);
 
     useEffect(() => {
-        console.log(Item);
         if (Item) {
+            setID(Item._id);
             setProduto(Item.produto);
             setUrlImage(Item.url_image);
             setDescricao(Item.descricao);
             setValor(Item.valor);
         }
     }, [Item]);
+    useEffect(() => {
+        if (id) {
+            const item = {
+                id,
+                Produto,
+                Valor,
+                Descricao,
+                UrlImage,
+                SaveButton,
+            };
+            const compare1 = item.Produto.length > 0 && item.Produto !== Item.produto;
+            const compare2 = item.Valor.length > 0 && item.Valor !== Item.valor;
+            const compare3 = item.Descricao.length > 0 && item.Descricao !== Item.descricao;
+            const compare4 = item.UrlImage.length > 0 && item.UrlImage !== Item.url_image;
+
+            const theFinalTrue = [compare1, compare2, compare3, compare4].some((el) => el === true);
+
+            setSaveButton(!theFinalTrue);
+        }
+    }, [Produto,
+        UrlImage,
+        Descricao,
+        Valor,
+        SaveButton]);
+
+
+    
 
     return (
         <Modal show={show} onHide={() => setShow(false)}>
@@ -54,6 +83,12 @@ function ModalAdminDetails({ show, setShow, Item }) {
             <Modal.Footer>
                 <Button variant="primary" onClick={() => setShow(false)}>
                         Cancelar
+                </Button>
+                <Button
+                    disabled={SaveButton}
+                    variant="primary"
+                    onClick={() => setShow(false)}>
+                        Salvar
                 </Button>
             </Modal.Footer>
         </Modal>
