@@ -1,6 +1,7 @@
 import { IProduct } from './src/interfaces/IProducts';
 import mongoose from 'mongoose';
 import ProductModel from './src/models/Produto';
+import UserModel from './src/models/UserModel';
 
 const MONGO_DB_URL = 'mongodb://localhost:27017/radarFit-BackEnd-App';
 
@@ -141,10 +142,29 @@ const seedProducts: IProduct[] = [
         descricao:'Mesmo na luz mais escura, sempre que você precisar, seu M12Pro está ali com você, capturando cada momento com precisão cristalina, transforme suas selfies em obras-primas e brilhe em todas as fotos.'
     },
 ]
+
+const seedUsers = [
+    {
+        nome: "Alberto Justus",
+        email: "admin@gmail.com",
+        senha: "queijo_suiço",
+        role: "Administrador"
+    },
+    {
+        nome: "Alehandro Pietro",
+        email: "user@gmail.com",
+        senha: "perna_de_grilo",
+        role: "Usuário"
+    }
+]
+
 const Prod = new ProductModel()
+const User = new UserModel
 const seedDB = async () => {
     await Prod.deleteMany({})
+    await User.deleteMany({})
     await Prod.insertMany(seedProducts)
+    await User.insertMany(seedUsers)
 }
 
 seedDB().then(() => {

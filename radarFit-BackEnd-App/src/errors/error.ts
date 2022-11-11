@@ -2,6 +2,13 @@ import { ErrorRequestHandler } from 'express';
 import { ZodError } from 'zod';
 import { ErrorTypes, errorCatalog } from './catalog';
 
+interface Error {
+  name: string;
+  status?: number,
+  message: string;
+  stack?: string;
+}
+
 const errorHandler: ErrorRequestHandler = ( 
   err: Error | ZodError, 
   _req,
@@ -21,8 +28,16 @@ const errorHandler: ErrorRequestHandler = (
     return res.status(httpStatus).json({ error: message });
   }
 
-  console.error(err);
-  return res.status(500).json({ message: 'internal error' });
-};
+  const { message } = err;
+  
+  const noMessage = message || "Internal Error"
+    if (err.status) {
+    const { status } = err;
+    return res.status(status).json({ message: noMessage });
+  }
+  const status =  500;
+
+  return res.status(status).json({ message: noMessage });
+}
 
 export default errorHandler;

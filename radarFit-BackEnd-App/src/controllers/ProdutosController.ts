@@ -15,7 +15,7 @@ export default class ProductController {
     const product = {
       produto, valor, descricao, created, updated, url_image
     };
-    const results = await this._service.create(product);
+    const results: any = await this._service.create(product);
     return res.status(201).json(results);
   }
 
