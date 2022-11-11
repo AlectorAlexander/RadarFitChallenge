@@ -1,5 +1,5 @@
 const MINIMUN_LENGTH_PASSWORD = 6;
-const MINIMUN_LENGTH_NAME = 11;
+const MINIMUN_LENGTH_NAME = 3;
 
 const register = {
     validateEmail: (email) => (/(.+)@(.+){2,}\.(.+){2,}/.test(email)),

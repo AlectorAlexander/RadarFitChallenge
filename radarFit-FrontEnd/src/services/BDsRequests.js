@@ -6,9 +6,9 @@ const instance = axios.create({
     baseURL: 'http://localhost:3001/',
 });
 
-/* export async function LoginFetch(email, password) {
+export async function LoginFetch(email, senha) {
     const response = await instance
-        .post('login', { email, password })
+        .post('login', { email, senha })
         .catch((error) => {
             console.log(error);
             return error.response;
@@ -21,11 +21,11 @@ const instance = axios.create({
         return response;
     }
     return response;
-} */
+}
 
-/* export async function createUser( name, email, password ) {
+export async function createUser( nome, email, senha ) {
     const response = await instance
-        .post('users', { name, email, password })
+        .post('register', { nome, email, senha, role: 'Usuário' })
         .catch((error) => {
             console.log(error);
             return error.response;
@@ -38,7 +38,26 @@ const instance = axios.create({
         return response;
     }
     return response;
-} */
+}
+
+export async function validateUser() {
+    const { token } = JSON.parse(localStorage.getItem('user'));
+    const response = await instance
+        .get('/login/validate', { headers: { 'Content-Type': imageType, Authorization: token } })
+        .catch((error) => {
+            console.log(error);
+            return error.response;
+        });
+
+
+    if (response.data.role) {
+        const { data } = response;
+        const { role } = data;
+        console.log(role);
+        return role;
+    }
+    return response;
+}
 
 export async function UpdateDocumentUser( id, document ) {
     const response = await instance
@@ -59,9 +78,9 @@ export async function UpdateDocumentUser( id, document ) {
  
 
 export async function getProducts() {
-    /* const { token } = JSON.parse(localStorage.getItem('user')); */
+    const { token } = JSON.parse(localStorage.getItem('user'));
     const response = await instance
-        .get('produtos', { headers: { 'Content-Type': imageType } })
+        .get('produtos', { headers: { 'Content-Type': imageType, Authorization: token } })
         .catch((error) => {
             console.log(error);
             return error.response.error;
@@ -70,9 +89,9 @@ export async function getProducts() {
 }
 
 export async function getProductsById(id) {
-    /* const { token } = JSON.parse(localStorage.getItem('user')); */
+    const { token } = JSON.parse(localStorage.getItem('user'));
     const response = await instance
-        .get(`produtos/${id}`, { headers: { 'Content-Type': imageType } })
+        .get(`produtos/${id}`, { headers: { 'Content-Type': imageType, Authorization: token } })
         .catch((error) => {
             console.log(error);
             return error.response.error;

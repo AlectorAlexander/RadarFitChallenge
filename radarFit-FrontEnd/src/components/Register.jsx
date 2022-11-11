@@ -38,7 +38,6 @@ export default function Register() {
             localStorage.setItem('user', JSON.stringify(response.data));}
 
         const { status } = response;
-
         if (status === magicNumberSim) {
             return history('/products');
         }
