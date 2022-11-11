@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-import Products from '../components/Products';
+import ProductsAdmin from '../components/adminProducts';
 import { getProducts } from '../services/BDsRequests';
 
 function AdminProducts() {
@@ -20,7 +20,7 @@ function AdminProducts() {
     return (
         <div className="AdminProducts">
             <Header />
-            {Prods && <Products Prods={ Prods } />}
+            {Prods && <ProductsAdmin setProds={ setProds } Prods={ Prods } />}
             <Footer />
         </div>
     );
