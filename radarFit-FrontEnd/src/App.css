@@ -12,6 +12,11 @@
   height: 75px;
 }
 
+.thumb-admin {
+  width: 175px;
+  height: 175px;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
