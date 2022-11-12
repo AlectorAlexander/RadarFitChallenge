@@ -83,13 +83,17 @@ export async function UpdateProduct( id, product ) {
             console.log(error);
             return error.response;
         });
+    return response;
+}
 
-    if (response.data.token) {
-        const { data } = response;
-        const { token } = data;
-        instance.defaults.headers.Authorization = token;
-        return response;
-    }
+export async function CreateProduct(product ) {
+    console.log(product);
+    const response = await instance
+        .post('produtos/', { ...product })
+        .catch((error) => {
+            console.log(error);
+            return error.response;
+        });
     return response;
 }
  

@@ -12,6 +12,14 @@
   height: 75px;
 }
 
+.link {
+  cursor: pointer;
+}
+
+.link:hover {
+  color: green;
+}
+
 .thumb-admin {
   width: 175px;
   height: 175px;

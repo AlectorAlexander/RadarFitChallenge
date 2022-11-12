@@ -8,6 +8,10 @@ import { getProducts } from '../services/BDsRequests';
 function AdminProducts() {
     const [Prods, setProds] = useState(null);
 
+    function refreshPage() {
+        window.location.reload(false);
+    }
+
     const request = async () => {
         const response = await getProducts();
         return setProds(response.data);
@@ -20,7 +24,7 @@ function AdminProducts() {
     return (
         <div className="AdminProducts">
             <Header />
-            {Prods && <ProductsAdmin setProds={ setProds } Prods={ Prods } />}
+            {Prods && <ProductsAdmin refreshPage={refreshPage} setProds={ setProds } Prods={ Prods } />}
             <Footer />
         </div>
     );

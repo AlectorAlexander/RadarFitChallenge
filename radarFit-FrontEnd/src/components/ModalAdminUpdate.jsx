@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Button, Form, FormGroup, Modal } from 'react-bootstrap';
 import { UpdateProduct } from '../services/BDsRequests';
 
-function ModalAdminDetails({ show, setShow, Item }) {
+function ModalAdminUpdate({ refreshPage, show, setShow, Item }) {
     const [Produto, setProduto] = useState('');
     const [id, setID] = useState('');
     const [UrlImage, setUrlImage] = useState('');
@@ -61,6 +61,7 @@ function ModalAdminDetails({ show, setShow, Item }) {
         const response = await UpdateProduct(id, upProduct);
         if (response.status === 200) {
             setShow(!show);
+            refreshPage();
         }
     };
     
@@ -72,27 +73,38 @@ function ModalAdminDetails({ show, setShow, Item }) {
             </Modal.Header>
             <Modal.Body>
                 <FormGroup>
-                    <Form.Control
-                        type="text"
-                        value={ Produto }
-                        onChange={ ({target}) => setProduto(target.value) }
-                    />
-               
-                    <Form.Control
-                        type="number"
-                        value={ Valor }
-                        onChange={ ({target}) => setValor(target.value) }
-                    />
-                    <Form.Control
-                        type="text"
-                        value={ Descricao }
-                        onChange={ ({target}) => setDescricao(target.value) }
-                    />
-                    <Form.Control
-                        type="text"
-                        value={ UrlImage }
-                        onChange={ ({target}) => setUrlImage(target.value) }
-                    />
+                    <Form.Label className='d-flex p-2 border-bottom'>
+                        Nome do Produto:
+                        <Form.Control
+                            type="text"
+                            value={ Produto }
+                            onChange={ ({target}) => setProduto(target.value) }
+                        />
+                    </Form.Label>
+                    <Form.Label className='d-flex p-2 border-bottom'>
+                        Valor do Produto:
+                        <Form.Control
+                            type="number"
+                            value={ Valor }
+                            onChange={ ({target}) => setValor(target.value) }
+                        />
+                    </Form.Label>
+                    <Form.Label className='d-flex p-2 border-bottom'>
+                        Descrição do Produto:
+                        <Form.Control
+                            type="text"
+                            value={ Descricao }
+                            onChange={ ({target}) => setDescricao(target.value) }
+                        />
+                    </Form.Label>
+                    <Form.Label className='d-flex p-2 border-bottom'>
+                        Thumb do Produto:
+                        <Form.Control
+                            type="text"
+                            value={ UrlImage }
+                            onChange={ ({target}) => setUrlImage(target.value) }
+                        />
+                    </Form.Label>
           
     
                 </FormGroup>
@@ -112,10 +124,11 @@ function ModalAdminDetails({ show, setShow, Item }) {
     );
 }
 
-ModalAdminDetails.propTypes = {
+ModalAdminUpdate.propTypes = {
     setShow: PropTypes.func.isRequired,
     show: PropTypes.bool.isRequired,
     Item: PropTypes.shape().isRequired,
+    refreshPage: PropTypes.shape().isRequired,
 };
 
-export default ModalAdminDetails;
+export default ModalAdminUpdate;

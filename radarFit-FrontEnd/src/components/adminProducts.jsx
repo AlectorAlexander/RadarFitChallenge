@@ -3,14 +3,17 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Form, Table } from 'react-bootstrap';
-import ModalAdminDetails from './detalhesAdmin';
+import ModalAdminUpdate from './ModalAdminUpdate';
+import { IoMdAddCircle } from 'react-icons/io';
+import ModalAdminCreate from './ModalAdminCreate';
 
-function ProductsAdmin({ Prods, setProds }) {
-    /*  const { setDetails } = useContext(Context); */
+
+function ProductsAdmin({ Prods, setProds, refreshPage }) {
 
     const [search, setSearch] = useState('');
     const [data, _setData] = useState(Prods);
     const [show, setShow] = useState(false);
+    const [showAdd, setShowAdd] = useState(false);
     const [Item, setItem] = useState();
 
     const setToModal = (item) => {
@@ -29,9 +32,11 @@ function ProductsAdmin({ Prods, setProds }) {
     }, [search]);
 
 
+
     return (
         <div className="Products d-flex flex-wrap justify-content-center container-fluid">
-            <ModalAdminDetails Item={ Item } show={ show } setShow={ setShow } />
+            <ModalAdminUpdate refreshPage={refreshPage} Item={ Item } show={ show } setShow={ setShow } />
+            <ModalAdminCreate refreshPage={refreshPage} showAdd={ showAdd } setShowAdd={ setShowAdd } />
             <Form.Control
                 placeholder="Pesquise por nome do Produto"
                 value={ search }
@@ -47,7 +52,8 @@ function ProductsAdmin({ Prods, setProds }) {
                         <th>Produto</th>
                         <th>Valor</th>
                         <th>Imagem</th>
-                        <th>Ver Detalhes</th>
+                        <th>Editar Detalhes</th>
+                        <th className='link' onClick={() => setShowAdd(true)}>Add <IoMdAddCircle /> </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -68,7 +74,7 @@ function ProductsAdmin({ Prods, setProds }) {
                                         type="button"
                                         onClick={() => setToModal(item)}
                                     > 
-                                         Detalhes
+                                         Editar
                                     </Button>
                                 </td>
                             </tr>
@@ -84,6 +90,7 @@ function ProductsAdmin({ Prods, setProds }) {
 ProductsAdmin.propTypes = {
     Prods: PropTypes.shape().isRequired,
     setProds: PropTypes.shape().isRequired,
+    refreshPage: PropTypes.shape().isRequired,
 };
   
 
