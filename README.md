@@ -48,11 +48,12 @@ Para logar como usuário comum, fala o login com:
 
 # Utilizando a aplicação
 Para ver a aplicação funcionando:
-<ul dir="auto">
-<li>Clone esse repositório `git clone git@github.com:AlectorAlexander/RadarFitChallenge.git` </li>
-<li>Entre na pasta /radarFit-BackEnd-App</li>
-<li>starte a aplicação com</li>
-<li>abra o terminal nessa pasta</li>
-<li>instale as dependências 'npm install'</li>
-<li>Starte a aplicação 'npm start'</li>
-</ul>
+- Clone esse repositório `git clone git@github.com:AlectorAlexander/RadarFitChallenge.git`
+- Entre na pasta `**/radarFit-BackEnd-App**`
+- abra o terminal nessa pasta
+- instale as dependências `npm install`
+- starte a aplicação com `npm start`
+- espere aparecer a mensagem no terminal `Running server on port: 3001`
+- Agora, sem fechar esse último terminal, navegue até a pasta `radarFit-FrontEnd`
+- instale as dependências `npm install`
+- starte a aplicação com `npm start`
