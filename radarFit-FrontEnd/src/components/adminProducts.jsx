@@ -6,6 +6,7 @@ import { Button, Form, Table } from 'react-bootstrap';
 import ModalAdminUpdate from './ModalAdminUpdate';
 import { IoMdAddCircle } from 'react-icons/io';
 import ModalAdminCreate from './ModalAdminCreate';
+import { deleteProducts } from '../services/BDsRequests';
 
 
 function ProductsAdmin({ Prods, setProds, refreshPage }) {
@@ -31,6 +32,12 @@ function ProductsAdmin({ Prods, setProds, refreshPage }) {
         } else { setProds(data); }
     }, [search]);
 
+    const deleProduct = async (id) => {
+        const response = await deleteProducts(id);
+        if(response.status === 204) {
+            refreshPage();
+        }
+    };
 
 
     return (
@@ -75,6 +82,15 @@ function ProductsAdmin({ Prods, setProds, refreshPage }) {
                                         onClick={() => setToModal(item)}
                                     > 
                                          Editar
+                                    </Button>
+                                </td>
+                                <td>
+                                    <Button
+                                        type="button"
+                                        variant='danger'
+                                        onClick={ () => deleProduct(_id) }
+                                    > 
+                                         Deletar
                                     </Button>
                                 </td>
                             </tr>

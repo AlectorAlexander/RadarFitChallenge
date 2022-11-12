@@ -120,6 +120,17 @@ export async function getProductsById(id) {
     return response;
 }
 
+export async function deleteProducts(id) {
+    const { token } = JSON.parse(localStorage.getItem('user'));
+    const response = await instance
+        .delete(`produtos/${id}`, { headers: { 'Content-Type': imageType, Authorization: token } })
+        .catch((error) => {
+            console.log(error);
+            return error.response.error;
+        });
+    return response;
+}
+
 
 export async function getSalesById(id) {
     const { token } = JSON.parse(localStorage.getItem('user'));
@@ -149,6 +160,7 @@ export async function getUserId(email) {
     }
     return response.data.id || response;
 }
+
 
 
 export async function createSales(userId, cellId) {
