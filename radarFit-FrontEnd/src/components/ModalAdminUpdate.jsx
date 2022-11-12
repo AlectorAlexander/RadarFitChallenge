@@ -52,7 +52,7 @@ function ModalAdminUpdate({ refreshPage, show, setShow, Item }) {
         const created = Item.created;
         const upProduct = {
             produto: Produto,
-            valor: Valor,
+            valor: Number(Valor),
             descricao: Descricao,
             url_image: UrlImage,
             created,

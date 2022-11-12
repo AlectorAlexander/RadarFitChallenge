@@ -12,8 +12,10 @@ export default class ProductController {
     const {
       produto, valor, descricao, created, updated, url_image
     } = req.body;
-    const product = {
-      produto, valor, descricao, created, updated, url_image
+    const newCreated = new Date(created)
+    const newUpdated = new Date(updated)
+    const product: IProduct = {
+      produto, valor, descricao, created: newCreated, updated: newUpdated, url_image
     };
     const results: any = await this._service.create(product);
     return res.status(201).json(results);

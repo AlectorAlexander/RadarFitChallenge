@@ -66,7 +66,7 @@ function Details() {
         return (<Modal show={showDontHave} onHide={handleCloseDontHave}>
             <Modal.Header closeButton>
             </Modal.Header>
-            <Modal.Body>Plano Adicionado!</Modal.Body>
+            <Modal.Body>Produto Adicionado!</Modal.Body>
             <Modal.Footer>
                 <Button variant="primary" onClick={handleCloseDontHave}>
                         OK
@@ -105,7 +105,7 @@ function Details() {
                         </ListGroup>
                         <Button
                             onClick={addItem}
-                            variant="primary">Contratar plano</Button>
+                            variant="primary">Adicionar Produto no Carrinho</Button>
                     </Card.Body>
                 </Card>
             </div>);

@@ -48,7 +48,9 @@ function Login() {
 
     return (
         <div className='d-flex justify-content-center mt-5'>
+            
             <FormGroup>
+                
                 <Form.Control
                     placeholder="Email"
                     onChange={handleEmail}
@@ -82,6 +84,7 @@ function Login() {
                             {errHomeMessage}
                         </span>
                     )}
+                    
                 </div>
             </FormGroup>
         </div>

@@ -15,7 +15,7 @@ export default function Footer() {
             >
                 <CDBBox display="flex" alignItems="center">
                     <a href="/" className="d-flex align-items-center p-0 text-dark">
-                        <span className="ml-3 h5 font-weight-bold">Reservoir Planos</span>
+                        <span className="ml-3 h5 font-weight-bold">RadarFit Challenge</span>
                     </a>
 
                 </CDBBox>

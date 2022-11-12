@@ -26,6 +26,14 @@ function Home() {
     }, []);
     return (
         <div className="App">
+            <div className='w-25'>
+                <p>
+                        Para a análise do que foi proposto no teste, logue com o
+                    email: {'"admin@gmail.com"'} e a
+                    senha: {'"queijo_suiço"'}
+                        e depois clique em {'"Administrar Produtos"'}
+                </p>
+            </div>
             {rightComponent()}
         </div>
     );
