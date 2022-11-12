@@ -37,10 +37,10 @@ Para ver a aplicação funcionando:
         "url_image": "https://m.media-amazon.com/images/I/51Qw3q+aeXL._AC_SY300_SX300_.jpg",
         "created": "2022-11-12T16:51:00.186Z",
         "updated": "2022-11-12T16:51:00.186Z"
-}
+   }
   ```
   
- - Sua API deve responder com status HTTP 200 e o seguinte body:
+- Sua API deve responder com status HTTP 200 e o seguinte body:
  
   ```json
   {
@@ -52,7 +52,7 @@ Para ver a aplicação funcionando:
     "updated": "2022-11-12T16:51:00.186Z",
     "_id": "636fde5ce9136038bd7ded67",
     "__v": 0
-}
+    }
   ```
 ## Endpoint `/produtos/636fcef48d1fc54f9e79471a`
 ### Rota do tipo `PUT`
@@ -66,7 +66,7 @@ Para ver a aplicação funcionando:
         "url_image": "https://m.media-amazon.com/images/I/51Qw3q+aeXL._AC_SY300_SX300_.jpg",
         "created": "2022-11-12T16:51:00.186Z",
         "updated": "2022-11-12T16:51:00.186Z"
-}
+   }
   ```
   
  - Sua API deve responder com status HTTP 200 e o seguinte body:
@@ -81,7 +81,7 @@ Para ver a aplicação funcionando:
     "created": "2022-11-12T16:51:00.186Z",
     "updated": "2022-11-12T16:51:00.186Z",
     "__v": 0
-}
+    }
   ```
   
  ## Endpoint `/produtos`
@@ -139,7 +139,7 @@ Para ver a aplicação funcionando:
   {
         "email": "admin@gmail.com",
         "senha": "queijo_suiço"
-}
+    }
   ```
   
  - Sua API deve responder com status HTTP 200 e o seguinte body:
@@ -160,7 +160,7 @@ Para ver a aplicação funcionando:
         "email": "alberto@gmail.com",
         "role": "user",
         "senha": "queijo_suiço"
-}
+      }
   ```
   
  - Sua API deve responder com status HTTP 201 e o seguinte body:
